@@ -33,19 +33,17 @@ void draw() {
 void keyPressed() {
   switch (scene) {
     case 0:
+    if(key == CODED) {
+     if(keyCode == TAB) {
+      scene = 2; 
+      advance();
+      break;
+      //Not sure why this part doesn't work, would be great if you can leave me with a comment on this! Thanks.
+     }
+    }
       advance();
       break;
   } 
-  //switch(scene) {
-  // if(key == CODED) {
-  //  if(keyCode == TAB) {
-  //    case 2:
-  //      advance();
-  //      break;
-  //  }
-  // }
-  //}
-  //doesn't work?
 }
 
 void advance() {
@@ -61,11 +59,11 @@ void mousePressed() {
         break;
     }
   }
-  if(mouseButton == RIGHT) {
-    switch (scene) {
-      case 2:
-        advance();
-        break;
-    }
-  }  
+  //if(mouseButton == RIGHT) {
+  //  switch (scene) {
+  //    case 2:
+  //      advance();
+  //      break;
+  //  }
+  //}  
 }
