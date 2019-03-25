@@ -20,30 +20,29 @@ void draw() {
       break;
     case 2:
       triangle(0, 0, width, 0, width/2, height);
-      text("rightClick", 520, 580);
+      text("UP", 520, 580);
       break;
     case 3:
-      text("fin", 100, 100);
+      text("DONE", 100, 100);
       break;
     default:
       break;
   }
 }
 
-void keyPressed() {
+void keyPressed() {  
   switch (scene) {
     case 0:
+      advance();
+      break;
+    case 2:   
     if(key == CODED) {
-     if(keyCode == TAB) {
-      scene = 2; 
-      advance();
-      break;
-      //Not sure why this part doesn't work, would be great if you can leave me with a comment on this! Thanks.
-     }
+      if(keyCode == UP) {
+        advance();
+        break;
+      }
     }
-      advance();
-      break;
-  } 
+  }
 }
 
 void advance() {
@@ -52,18 +51,8 @@ void advance() {
 
 
 void mousePressed() {
-  if(mouseButton == LEFT) {
-    switch (scene) {
-      case 1:
-        advance();
-        break;
-    }
-  }
-  //if(mouseButton == RIGHT) {
-  //  switch (scene) {
-  //    case 2:
-  //      advance();
-  //      break;
-  //  }
-  //}  
+  if(mouseButton == LEFT){ 
+    scene = 1;
+    advance();   
+  } 
 }
