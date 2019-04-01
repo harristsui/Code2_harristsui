@@ -16,7 +16,7 @@ String descriptions[] = {
 String [][] options = {
   {"go to state 1", "go to state 2"},
   {"go to state 0"},
-  {"go to state 1", "go to state 0"},
+  {"go to state 1", "go to state 0"}
 };
 
 int [][] optionTargets = {
@@ -51,15 +51,21 @@ void keyPressed() {
  //state = (state + 1) % descriptions.length; 
  //println(state);
  
- if(keyCode == 49) {
-   state = optionTargets[state][0];
- }
+ //if(keyCode == 49) {
+ //  state = optionTargets[state][0];
+ //}
  
- if(keyCode == 50) {
-   state = optionTargets[state][1];
- }
+ //if(keyCode == 50) {
+ //  state = optionTargets[state][1];
+ //}
  
-  if(keyCode == 51) {
-   state = optionTargets[state][2];
- }
+ // if(keyCode == 51) {
+ //  state = optionTargets[state][2];
+ //}
+ 
+  for (int i = 0; i < optionTargets[state].length; i++) {
+    if (keyCode - 49 == i) {
+       state = optionTargets[state][i];
+    }
+  }
 }

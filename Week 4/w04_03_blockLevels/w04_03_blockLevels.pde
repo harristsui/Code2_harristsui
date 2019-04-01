@@ -1,82 +1,62 @@
-int rows = 12;
-int cols = 12;
-int cellsize = 600/rows;
-
-Block[][] blocks = new Block[rows][cols];
-
-//int[][] level = {
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0}, 
-//  {0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-//  {0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-//  {0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0}, 
-//  {0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-//};
-//for (int i = 0; i < rows; i++) {
-//  for (int j = 0; j < cols; j++) {
-//    if (level[j][i] == 0) {
-//      blocks[j][i] = new DarkBlock(i, j);
-//    } else {
-//      blocks[j][i] = new LightBlock(i, j);
-//    }
-//  }
-//}
-
+Block blocks[][] = new Block[12][12];
 Table data;
-TableRow[] row;
-float[] c;
+int num;
 
 void setup() {
   size(600, 600);
-  data = loadTable("data.csv", "header");
-  for (int k = 0; k < data.getRowCount(); k++) {
-    TableRow row = data.getRow(k);
-    c[k] = row.getInt(c + "k");
-    println(c[k]);
-
+  data = loadTable("data.csv");
+  for(int i = 0; i < data.getColumnCount(); i++) {
+   for(int j = 0; j < data.getRowCount(); j++) {
+     TableRow row = data.getRow(j);
+     num = row.getInt(i);
+     if(num == 0) {
+       blocks[i][j] = new LightColor(i, j);
+     } else {
+       blocks[i][j] = new DarkColor(i, j);
+     }
+   }
   }
-  
+
 }
+
 
 void draw() {
   background(255);
-  //for (int i = 0; i < rows; i++) {
-  //  for (int j = 0; j < cols; j++) {
-  //    blocks[j][i].display();
-  //  }
-  //}
+  for (int i = 0; i < data.getColumnCount(); i++) {
+    for (int j = 0; j < data.getRowCount(); j++) {
+      blocks[j][i].display();
+    }
+  }
 }
+
 
 class Block {
   PVector pos;
+  float cellSize = 50;
   float c;
-
-  Block(int row, int col) {
-    pos = new PVector(row * cellsize, col * cellsize);
+  
+  Block(int x, int y) {
+   pos = new PVector(x * cellSize, y * cellSize);
+   c = 255;
   }
-
+  
   void display() {
+    noStroke();
     fill(c);
-    rect(pos.x, pos.y, cellsize, cellsize);
+    rect(pos.x, pos.y, cellSize, cellSize);
   }
 }
 
-class LightBlock extends Block {
-  LightBlock(int row, int col) {
-    super(row, col);
-    c = 220;
-  }
+class LightColor extends Block {
+ LightColor(int x, int y) {
+  super(x, y);
+  c = 220;
+ }
 }
 
-class DarkBlock extends Block {
-  DarkBlock(int row, int col) {
-    super(row, col);
-    c = 50;
+class DarkColor extends Block {
+  DarkColor(int x, int y) {
+   super(x, y);
+   c = 60;
   }
 }
