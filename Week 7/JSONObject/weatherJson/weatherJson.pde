@@ -6,6 +6,7 @@ int state = 0;
 int bgC;
 int textC;
 int testing = 299;
+float c;
 
 void setup() {
   size(1000, 1000);
@@ -42,10 +43,9 @@ void cases() {
  JSONArray weather1 = data1.getJSONArray("weather");
  JSONObject weatherNum1 = weather1.getJSONObject(0);
  String weatherStatus1 = weatherNum1.getString("description");
- JSONArray temp1 = data1.getJSONArray("main");
- JSONObject tempNum1 = temp1.getJSONObject(0);
- float temp1C = tempNum1.getFloat("temp");
- println(temp1C);
+ JSONObject temp1 = data1.getJSONObject("main");
+ float temp1C = temp1.getFloat("temp");
+
  
  switch(state) {
    case 0:
@@ -68,11 +68,10 @@ void cases() {
    textC = 255;
    textMode(CENTER);
    text(weatherStatus1, 250, 750);
-   text("Temp", 320, 750);
-   float c = 0;
+   text("Temp", 620, 750);
    fill(map(c, 0, 255, 0, temp1C));
-   rect(340, 750, temp1C, 30, 5, 5, 5, 5);
-   //cant test the rect part cuz I have been requesting too many apis, will check the position and length tmr morning. 
+   rect(620, 800, temp1C, 30, 5, 5, 5, 5);
+   //what is the appropriate way to map the temp1C (around 299) to represent in a gradient color form by using the map function?  
    break;
  }
 }
