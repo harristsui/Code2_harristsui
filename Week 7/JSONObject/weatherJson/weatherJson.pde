@@ -38,7 +38,7 @@ void cases() {
  JSONObject weatherNum0 = weather0.getJSONObject(0);
  String weatherStatus0 = weatherNum0.getString("description");
  
- data1 = loadJSONObject("http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=a470954c05063f8e3254e223b0ca1003");
+ data1 = loadJSONObject("http://api.openweathermap.org/data/2.5/weather?q=Guangzhou,cn&APPID=a470954c05063f8e3254e223b0ca1003");
  JSONArray weather1 = data1.getJSONArray("weather");
  JSONObject weatherNum1 = weather1.getJSONObject(0);
  String weatherStatus1 = weatherNum1.getString("description");
