@@ -12,6 +12,9 @@ class Generator {
   void addP() {
     pos.add(vel);
     particles.add(new Particle(pos.x, pos.y));
+    if(pos.x > height) {
+      vel.y *= -1;
+    }
     //for(Particle a : particles){
     //  if(a.pos.y > 600) {
     //    vel.y -= 1;

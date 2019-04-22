@@ -6,7 +6,7 @@ class Rect {
  float maxForce;
  float maxSpeed;
  float size = 10;
- int counts;
+
 
 
  Rect() {
@@ -20,6 +20,7 @@ class Rect {
    noStroke();
    fill(255);
    rect(pos.x, pos.y, size, size);
+   rectMode(CENTER);
  }
 
   void update() {
@@ -27,33 +28,26 @@ class Rect {
     pos.add(vel);
     acc.mult(0);
     //reSet acc to 0 everytime
-  
+ 
   if(pos.x + size/2 > width) {
    vel.x *= -1; 
    sound.play();
-   counts++;
+   finalScore++;
   } else if(pos.x - size/2 < 0) {
      vel.x *= -1;; 
      sound.play();
-     counts++;
+     finalScore++;
   }
   
   if(pos.y + size/2 > height) {
    vel.y *= -1; 
+   finalScore++;
    sound.play();
-   counts++;
   }  else if(pos.y - size/2 < 0) {
    vel.y *= -1; 
+   finalScore++;
    sound.play();
-   counts++;
   }  
-  }
-  
-  void count() {
-    textSize(30);
-    text(counts, 800, 50); 
-    println(counts);
-    //the counts get reset to 0 everyframe, how shall I fix this? Thanks. 
   }
   
   void applyForce(PVector force) {

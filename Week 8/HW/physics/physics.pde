@@ -4,6 +4,7 @@ ArrayList<Rect> rects= new ArrayList<Rect>();
 ArrayList<Attractor> attract = new ArrayList<Attractor>();
 color cc;
 SoundFile sound;
+int finalScore = 0;
 
 
 void setup() {
@@ -39,8 +40,9 @@ void draw() {
    
   r.display(); 
   r.update();
-  r.count();
  }
+ stroke(255);
+ text(finalScore, 950, 950);
 }
 
 void mousePressed() {
