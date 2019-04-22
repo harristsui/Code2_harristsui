@@ -1,9 +1,11 @@
 ArrayList<Generator> generators;
 
+
 void setup() {
   size(800, 800, P3D);
   generators = new ArrayList<Generator>();
   rotateX(radians(-10));
+  
 }
 
 void draw() {
@@ -15,5 +17,6 @@ void draw() {
 }
 
 void mousePressed() {
-  generators.add(new Generator(mouseX, mouseY));
+  PVector mousePV = new PVector(mouseX, mouseY);
+  generators.add(new Generator(mousePV.x, mousePV.y));
 }

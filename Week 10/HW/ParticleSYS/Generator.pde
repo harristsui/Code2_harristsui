@@ -12,15 +12,15 @@ class Generator {
   void addP() {
     pos.add(vel);
     particles.add(new Particle(pos.x, pos.y));
-    for(Particle a : particles){
-      if(a.pos.y > 600) {
-        vel.y -= 1;
-      }
+    //for(Particle a : particles){
+    //  if(a.pos.y > 600) {
+    //    vel.y -= 1;
+    //  }
       
-      if(a.pos.y < 200) {
-        vel.y += 1;
-      }
-    }
+    //  if(a.pos.y < 200) {
+    //    vel.y += 1;
+    //  }
+    //}
   }
   
   void updateP() {
