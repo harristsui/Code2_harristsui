@@ -39,12 +39,13 @@ class Circle {
   void update() {
     vel.add(acc);
     pos.add(vel);
+    acc.mult(0);
     
-    if(pos.x + size/2 > width || pos.x + size/2 < 0) {
+    if(pos.x + size/2 > width || pos.x - size/2 < 0) {
       vel.x *= -1;
     }
     
-    if(pos.y + size/2 > height || pos.y + size/2 < 0) {
+    if(pos.y + size/2 > height || pos.y - size/2 < 0) {
       vel.y *= -1;
     }
 
